@@ -1,0 +1,7 @@
+name: Local Environment
+values:
+  - key: baseUrl
+    value: 'https://localhot:8080'
+  - key: apiKey
+    value: '12345'
+color: 300

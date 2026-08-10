@@ -1,0 +1,44 @@
+$kind: http-request
+name: Register a new user
+description: ""
+url: "{{baseUrl}}/v1/users/register"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      pm.variables.set("password",pm.variables.replaceIn("{{$randomPassword}}"));
+      pm.variables.set("username", pm.variables.replaceIn("{{$randomUserName}}"));
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("Registration Successful", function () {
+          pm.response.to.have.status(201);
+      });
+
+      pm.variables.set("id", pm.response.json().id);
+    language: text/javascript
+settings: {}
+examples: ./.resources/Register a new user.resources/examples
+order: 1000

@@ -1,0 +1,13 @@
+name: Prod Environment
+values:
+  - key: baseUrl
+    value: 'https://customer-education.postmanlabs.com'
+  - key: apiKey
+    secret: true
+    source:
+      provider: postman
+      postman:
+        type: cloud
+        secretId: 38127efc-b154-4cd6-9a3d-e61780a9aa9a
+        vaultId: daf548bf-5079-4f98-9fcf-90399d9a5546
+color: 120

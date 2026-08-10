@@ -1,0 +1,12 @@
+$kind: collection
+description: This is a demo description for zebra webinar
+variables:
+  baseUrl: /
+auth:
+  - id: c0dea49f-24c5-450c-8569-09e16c48539b
+    type: apikey
+    name: apikey auth
+    credentials:
+      key: X-API-Key
+      value: "{{apiKey}}"
+      in: header
